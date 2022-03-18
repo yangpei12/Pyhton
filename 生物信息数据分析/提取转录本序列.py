@@ -27,6 +27,7 @@ with open(out, 'r') as file_handle_2:
     keys = ['>MSTRG.3.1', '>MSTRG.1.1', '>MSTRG.2.1', '>MSTRG.6.1']
     for k in keys:
         out_handle_2.write('{0} {1} {2}'.format(k, '\n', textwrap.fill(dic.get(k), 70))+'\n')
+print('hello world')
 
 
 
