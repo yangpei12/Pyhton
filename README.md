@@ -1,2 +1,2 @@
 # Pyhton
-this is a person python scripts 
+this is a personal python scripts 
