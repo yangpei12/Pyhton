@@ -6,4 +6,4 @@ with open('uniprot_id_10.txt','r') as file_handle:
     for line in file_handle.readlines():
         new_line = line.strip('\n')
         #print(new_line)
-        print(re.sub(r'\.[0-9]+','',new_line))
+        print(pattern.sub('',new_line))
