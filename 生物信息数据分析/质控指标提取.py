@@ -33,9 +33,10 @@ print(result)
 """
 
 
-class BowtieFun:
+class BowtieFun():
     def __init__(self,sample):
         self.sample = sample
+
     def readFun(self,num):
         self.num = num
         Path = '{0}{1}{2}{3}'.format(self.sample, '_bowtie_abundance_', self.num,'.log')
@@ -45,17 +46,26 @@ class BowtieFun:
             line = Pattern.match(Lines[5])
             Ratio = pd.Series([line.group(1)], index=[self.sample])
             return Ratio
+
     def mergedFun(self,bowtie1,bowtie2):
         self.bowtie1 = bowtie1
         self.bowtie2 = bowtie2
         Bowtie = pd.concat([self.bowtie1, self.bowtie2], axis=1)
         return Bowtie
 
-bowtie1 = BowtieFun('A1').readFun(1)
-bowtie2 = BowtieFun('A1').readFun(2)
-Bowtie = BowtieFun('A1').mergedFun(bowtie1,bowtie2)
-print(Bowtie)
+# 该示例对象构造过程中可传递样本名亦即 self.sample = sample
+# 创建A1样本的实例
+# A1_bowtie1 = BowtieFun('A1').readFun(1)
+# A1_bowtie2 = BowtieFun('A1').readFun(2)
+# Bowtie = BowtieFun('A1').mergedFun(A1_bowtie1,A1_bowtie2)
 
+# 使用map函数将全部样本应用到该类上BowtieFun
+# 首先创建一个字典推导式
+Dicts = {k:[1,2] for k in Sample_info['#SampleID'] }
+# 使用map函数，将字典应用到实例对象上
+# {'A1': [1, 2], 'A2': [1, 2]}
+print(Dicts)
+map()
 
 
 
