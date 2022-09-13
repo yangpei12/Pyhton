@@ -55,17 +55,24 @@ class BowtieFun():
 
 # 该示例对象构造过程中可传递样本名亦即 self.sample = sample
 # 创建A1样本的实例
-# A1_bowtie1 = BowtieFun('A1').readFun(1)
-# A1_bowtie2 = BowtieFun('A1').readFun(2)
-# Bowtie = BowtieFun('A1').mergedFun(A1_bowtie1,A1_bowtie2)
+def rnaPrint(sample_name, Arg2, Arg3):
+    RNAI2_bowtie1 = BowtieFun(sample_name).readFun(Arg2)
+    RNAI2_bowtie2 = BowtieFun(sample_name).readFun(Arg3)
+    Bowtie = BowtieFun(sample_name).mergedFun(RNAI2_bowtie1, RNAI2_bowtie2)
+    return Bowtie
 
 # 使用map函数将全部样本应用到该类上BowtieFun
 # 首先创建一个字典推导式
-Dicts = {k:[1,2] for k in Sample_info['#SampleID'] }
+#Dicts = {k:[1,2] for k in Sample_info['#SampleID']}
 # 使用map函数，将字典应用到实例对象上
-# {'A1': [1, 2], 'A2': [1, 2]}
-print(Dicts)
-map()
+# {'RNAI2': [1, 2], 'RNAI2': [1, 2]}
+
+lst1 = ['RNAP1','RNAI2']
+lst2 = [1, 1]
+lst3 = [2, 2]
+res = map(rnaPrint, lst1, lst2, lst3)
+for temp in res:
+    print(temp)
 
 
 
