@@ -1,14 +1,20 @@
 import pandas as pd
 import os
-os.chdir("E:\scripts_input_R_python\python\Input")
-Input_data = pd.read_excel('kegg背景.xlsx',sheet_name=0)
+os.chdir("/Users/yangpei/YangPei/File/Python")
+Input_data = pd.read_excel('Input/kegg背景2.xlsx', sheet_name=0)
 
-for gene_id in set(Input_data['gene_id']):
+def keggfun(id_nummber):
     Index_list = []
-    for key,value in enumerate(Input_data['gene_id']):
-        if value == gene_id:
+    for key, value in enumerate(Input_data['gene_id']):
+        if value == id_nummber:
             Index_list.append(key)
-    Data = Input_data.loc[Index_list,['gene_id','pathway']]
+        else:
+            pass
+    Data = Input_data.loc[Index_list, ['gene_id', 'pathway']]
     dicts = {''.join(set(Data['gene_id'])): ';'.join(list(Data['pathway']))}
     output_handle = pd.Series(dicts)
-    output_handle.to_csv('output_kegg背景.csv',mode='a', header=False)
+    return output_handle
+
+for temp in Input_data['gene_id']:
+    result = keggfun(temp)
+    result.to_csv('Output/output_kegg背景.csv', mode='a', header=False)
